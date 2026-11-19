@@ -1,0 +1,17 @@
+services:
+
+  vehicle-analysis-service:
+    build:
+      context: ./vehicle-analysis-service/vehicle-analysis-service
+    container_name: vehicle-analysis-service
+    ports:
+      - "8081:8081"
+
+  telemetry-service:
+    build:
+      context: ./telemetry-service/telemetry-service
+    container_name: telemetry-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - vehicle-analysis-service
